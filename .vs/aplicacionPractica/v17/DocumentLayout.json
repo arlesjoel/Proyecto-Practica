@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\dinamicweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|solutionrelative:dinamicweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E1B14F5C-EB28-45FF-8ABE-E6EDEF90DD2F}|TestUnity\\TestUnity.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\testunity\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1B14F5C-EB28-45FF-8ABE-E6EDEF90DD2F}|TestUnity\\TestUnity.csproj|solutionrelative:testunity\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\dinamicweb\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|solutionrelative:dinamicweb\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{43EE56C2-37AE-4E3A-8400-6052D740F6A0}|EL\\EL.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\el\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43EE56C2-37AE-4E3A-8400-6052D740F6A0}|EL\\EL.csproj|solutionrelative:el\\clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\dinamicweb\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|solutionrelative:dinamicweb\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\dal\\dal_clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|solutionrelative:dal\\dal_clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\dinamicweb\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|solutionrelative:dinamicweb\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\dal\\context\\bdsistemaventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|solutionrelative:dal\\context\\bdsistemaventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\dinamicweb\\dinamicweb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|solutionrelative:dinamicweb\\dinamicweb.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\dinamicweb\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|solutionrelative:dinamicweb\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|c:\\users\\ing\\source\\repos\\aplicacionpractica\\dal\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|solutionrelative:dal\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,78 +36,65 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\Program.cs",
-              "RelativeDocumentMoniker": "dinamicweb\\Program.cs",
-              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\Program.cs",
-              "RelativeToolTip": "dinamicweb\\Program.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\TestUnity\\Program.cs",
+              "RelativeDocumentMoniker": "TestUnity\\Program.cs",
+              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\TestUnity\\Program.cs",
+              "RelativeToolTip": "TestUnity\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAzspPiLT7vxUAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T06:05:35.262Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\Components\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "dinamicweb\\Components\\Layout\\MainLayout.razor",
-              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\Components\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "dinamicweb\\Components\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-16T06:04:37.619Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "App.razor",
-              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\Components\\App.razor",
-              "RelativeDocumentMoniker": "dinamicweb\\Components\\App.razor",
-              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\Components\\App.razor",
-              "RelativeToolTip": "dinamicweb\\Components\\App.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAB5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-16T06:03:10.68Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_Imports.razor",
-              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\Components\\_Imports.razor",
-              "RelativeDocumentMoniker": "dinamicweb\\Components\\_Imports.razor",
-              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\Components\\_Imports.razor",
-              "RelativeToolTip": "dinamicweb\\Components\\_Imports.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-16T06:02:34.299Z",
+              "WhenOpened": "2025-03-17T05:27:03.874Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "dinamicweb",
-              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\dinamicweb.csproj",
-              "RelativeDocumentMoniker": "dinamicweb\\dinamicweb.csproj",
-              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\dinamicweb.csproj",
-              "RelativeToolTip": "dinamicweb\\dinamicweb.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-16T05:55:55.156Z",
+              "Title": "Conexion.cs",
+              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\DAL\\Conexion.cs",
+              "RelativeDocumentMoniker": "DAL\\Conexion.cs",
+              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\DAL\\Conexion.cs",
+              "RelativeToolTip": "DAL\\Conexion.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAABcAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T04:55:27.889Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Counter.razor",
-              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\Components\\Pages\\Counter.razor",
-              "RelativeDocumentMoniker": "dinamicweb\\Components\\Pages\\Counter.razor",
-              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\dinamicweb\\Components\\Pages\\Counter.razor",
-              "RelativeToolTip": "dinamicweb\\Components\\Pages\\Counter.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-16T05:42:26.882Z",
+              "DocumentIndex": 2,
+              "Title": "DAL_Clientes.cs",
+              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\DAL\\DAL_Clientes.cs",
+              "RelativeDocumentMoniker": "DAL\\DAL_Clientes.cs",
+              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\DAL\\DAL_Clientes.cs",
+              "RelativeToolTip": "DAL\\DAL_Clientes.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAC0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T04:49:08.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Clientes.cs",
+              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\EL\\Clientes.cs",
+              "RelativeDocumentMoniker": "EL\\Clientes.cs",
+              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\EL\\Clientes.cs",
+              "RelativeToolTip": "EL\\Clientes.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAAwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T04:35:05.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BDSistemaVentas.cs",
+              "DocumentMoniker": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\DAL\\Context\\BDSistemaVentas.cs",
+              "RelativeDocumentMoniker": "DAL\\Context\\BDSistemaVentas.cs",
+              "ToolTip": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\DAL\\Context\\BDSistemaVentas.cs",
+              "RelativeToolTip": "DAL\\Context\\BDSistemaVentas.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T04:28:25.003Z",
               "EditorCaption": ""
             }
           ]
