@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\dinamicweb.props" />
+</Project>
