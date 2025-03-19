@@ -4012,11 +4012,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\EL\\EL.csproj",
+      "projectUniqueName": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\EL\\EL.csproj",
       "projectName": "EL",
-      "projectPath": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\EL\\EL.csproj",
+      "projectPath": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\EL\\EL.csproj",
       "packagesPath": "C:\\Users\\ing\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ing\\source\\repos\\aplicacionPractica\\EL\\obj\\",
+      "outputPath": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\EL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
