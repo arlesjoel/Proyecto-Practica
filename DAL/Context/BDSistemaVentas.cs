@@ -17,6 +17,7 @@ namespace DAL.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { _ = optionsBuilder.UseSqlServer(Conexion.GetConnectionStringDev()); }
 
         public DbSet<Clientes> Clientes { get; set; }
+        public DbSet<Proveedores> Proveedores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
