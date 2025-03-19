@@ -1,0 +1,25 @@
+﻿@page "/clientes"
+@using Radzen.Blazor
+@using System.Diagnostics
+@layout Layout.MainLayout
+@rendermode InteractiveServer
+<PageTitle>Clientes</PageTitle>
+
+<RadzenStack>
+	<Radzenrow AlignItems="AlignItems.Center">
+		<RadzenColumn Size = "12" SizeMD="6">
+			<h3>Administracion de clientes</h3>
+		</RadzenColumn>
+		<RadzenColumn Size="12" SizeMD="6">
+			<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
+				<RadzenButton Icon="add_circle_outline" Text="Agregar" Variant="Variant.Flat">
+
+				</RadzenButton>
+			</RadzenStack>
+		</RadzenColumn>
+	</Radzenrow>
+</RadzenStack>
+
+@code {
+
+}
