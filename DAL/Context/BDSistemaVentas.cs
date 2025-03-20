@@ -18,6 +18,11 @@ namespace DAL.Context
 
         public DbSet<Clientes> Clientes { get; set; }
         public DbSet<Proveedores> Proveedores { get; set; }
+        public DbSet<Categorias> Categorias { get; set; }
+        public DbSet<Empleado> Empleado { get; set; }
+        public DbSet<Articulos> Articulos { get; set; }
+        public DbSet<Ingreso> Ingreso { get; set; }
+        public DbSet<DetalleIngreso> DetalleIngreso { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
