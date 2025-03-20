@@ -24,9 +24,5 @@ namespace EL
         public decimal Cantidad { get; set; }
         [Required]
         public decimal PrecioVenta { get; set; }
-        [ForeignKey("IdIngreso")]
-        public virtual Ingreso Ingresos { get; set; }
-        [ForeignKey("IdArticulo")]
-        public virtual Articulos Articulos { get; set; }
     }
 }

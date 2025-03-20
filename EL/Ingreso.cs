@@ -22,9 +22,6 @@ namespace EL
         public DateTime FechaRegistro { get; set; }
         [Required]
         public bool Activo { get; set; }
-        [ForeignKey("IdEmpleado")]
-        public virtual Empleado Empleados { get; set; }
-        [ForeignKey("IdProveedor")]
-        public virtual Proveedores Proveedores { get; set; }
+        
     }
 }

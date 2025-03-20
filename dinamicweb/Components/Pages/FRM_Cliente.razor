@@ -1,25 +1,153 @@
 ﻿@page "/clientes"
 @using Radzen.Blazor
 @using System.Diagnostics
+@using DAL
+@using EL
 @layout Layout.MainLayout
 @rendermode InteractiveServer
 <PageTitle>Clientes</PageTitle>
 
 <RadzenStack>
 	<Radzenrow AlignItems="AlignItems.Center">
-		<RadzenColumn Size = "12" SizeMD="6">
+		<RadzenColumn Size="12" SizeMD="6">
 			<h3>Administracion de clientes</h3>
 		</RadzenColumn>
 		<RadzenColumn Size="12" SizeMD="6">
 			<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
-				<RadzenButton Icon="add_circle_outline" Text="Agregar" Variant="Variant.Flat">
+				<RadzenButton Icon="add_circle_outline" Text="Agregar" Click="@AddButtonClick" Variant="Variant.Flat">
 
 				</RadzenButton>
 			</RadzenStack>
 		</RadzenColumn>
 	</Radzenrow>
+	<RadzenRow>
+		<RadzenColumn SizeMD="12">
+			<RadzenDataGrid @ref="GridClientes"
+			ColumnWidth="200px"
+			TItem="EL.Clientes"
+			FilterMode="FilterMode.Simple"
+			AllowPaging="true"
+			ShowPagingSummary="true"
+			PageSizeOptions=@(new int[]{5,10,20,30})
+			Data="@ClientesCollection"
+			RowCreate="@GridRowCreate"
+			RowUpdate="@GridRowUpdate">
+				<Columns>
+					<RadzenDataGridColumn TItem="EL.Clientes" Property="IdCliente" Title="IdCliente" Visible="false">
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Clientes" Property="Nombre" Title="Nombre">
+						<EditTemplate Context="Clientes">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el nombre" @bind-Value="@cliente.Nombre" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Clientes" Property="DNI" Title="DNI">
+						<EditTemplate Context="Clientes">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el DNI" @bind-Value="@cliente.DNI" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Clientes" Property="Telefono" Title="Telefono">
+						<EditTemplate Context="Clientes">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el Telefono" @bind-Value="@cliente.Telefono" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Clientes" Property="Correo" Title="Correo">
+						<EditTemplate Context="Clientes">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el correo" @bind-Value="@cliente.Correo" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Clientes" Filterable="false" Sortable="false" Title="Acciones" TextAlign="TextAlign.Center" Frozen="true" FrozenPosition="FrozenColumnPosition.Right">
+						<EditTemplate Context="Clientes">
+							<RadzenButton Icon="check" ButtonStyle="ButtonStyle.Success" Variant="Variant.Flat" Size="ButtonSize.Medium"
+							Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => SaveButtonClick(args,Clientes)) />
+							<RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+							Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => CancelButtonClick(args,Clientes)) />
+
+						</EditTemplate>
+						<Template Context="Clientes">
+							<RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+							Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => EditButtonClick(args,Clientes)) />
+							<RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Medium"
+							Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => GridDeleteButtonClick(args,Clientes)) />
+
+						</Template>
+					</RadzenDataGridColumn>
+				</Columns>
+
+
+			</RadzenDataGrid>
+		</RadzenColumn>
+	</RadzenRow>
 </RadzenStack>
 
 @code {
+	private RadzenDataGrid<EL.Clientes> GridClientes = new();
+	private IEnumerable<EL.Clientes> ClientesCollection { get; set; }
+	private EL.Clientes cliente = new();
+
+	protected override async Task OnInitializedAsync()
+	{
+		await CargarGrid();
+	}
+
+	private async Task CargarGrid()
+	{
+		ClientesCollection = await DAL_Clientes.Lista();
+	}
+
+	private async Task GridRowCreate(EL.Clientes data)
+	{
+		if(data.Nombre == string.Empty || data.DNI == string.Empty || data.Telefono == string.Empty || data.Correo == string.Empty)
+		{
+			return;
+		}
+		var result = await DAL_Clientes.Insert(data);
+		if(result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+	}
+
+	private async Task GridRowUpdate(EL.Clientes data)
+	{
+		if (data.Nombre == string.Empty || data.DNI == string.Empty || data.Telefono == string.Empty || data.Correo == string.Empty)
+		{
+			return;
+		}
+		var result = await DAL_Clientes.Update(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+
+	}
+
+	private async Task AddButtonClick(MouseEventArgs args)
+	{
+		await GridClientes.InsertRow(new EL.Clientes());
+	}
+
+	private async Task EditButtonClick(MouseEventArgs args, EL.Clientes data)
+	{
+		await GridClientes.EditRow(data);
+	}
+
+	private async Task GridDeleteButtonClick(MouseEventArgs args, EL.Clientes data)
+	{
+
+	}
+
+	private async Task SaveButtonClick(MouseEventArgs args,EL.Clientes data)
+	{
+		await GridClientes.InsertRow(data);
+	}
+
+	private async Task CancelButtonClick(MouseEventArgs args,EL.Clientes data)
+	{
+		GridClientes.CancelEditRow(data);
+	}
 
 }

@@ -33,7 +33,6 @@ namespace EL
         public DateTime FechaRegistro { get; set; }
         public int? UsuarioActualiza { get; set; }
         public DateTime? FechaActualiza { get; set; }
-        [ForeignKey("CategoriaId")]
-        public virtual Categorias Categorias{ get; set; }
+        
     }
 }

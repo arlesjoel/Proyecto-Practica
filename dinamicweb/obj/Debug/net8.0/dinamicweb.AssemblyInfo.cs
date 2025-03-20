@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("dinamicweb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b4d9173f36199865194c26ec3232e6511f4b7e3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a07f49568ac54e2b6cbabac48bfde4b937bb56d")]
 [assembly: System.Reflection.AssemblyProductAttribute("dinamicweb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("dinamicweb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
