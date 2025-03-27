@@ -45,5 +45,11 @@ namespace DAL
             }
             return await BD.SaveChangesAsync() > 0;
         }
+
+        public static async Task<List<Empleado>> Lista()
+        {
+            using BDSistemaVentas BD = new();
+            return await BD.Empleado.Where(A => A.Activo).ToListAsync();
+        }
     }
 }

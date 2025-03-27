@@ -1,0 +1,161 @@
+﻿@page "/articulos"
+@using Radzen.Blazor
+@using System.Diagnostics
+@using DAL
+@using EL
+@layout Layout.MainLayout
+@rendermode InteractiveServer
+<PageTitle>Articulos</PageTitle>
+
+<RadzenStack>
+	<Radzenrow AlignItems="AlignItems.Center">
+		<RadzenColumn Size="12" SizeMD="6">
+			<h3>Administracion de clientes</h3>
+		</RadzenColumn>
+		<RadzenColumn Size="12" SizeMD="6">
+			<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
+				<RadzenButton Icon="add_circle_outline" Text="Agregar" Click="@AddButtonClick" Variant="Variant.Flat">
+
+				</RadzenButton>
+			</RadzenStack>
+		</RadzenColumn>
+	</Radzenrow>
+	<RadzenRow>
+		<RadzenColumn SizeMD="12">
+			<RadzenDataGrid @ref="GridArticulos"
+							ColumnWidth="200px"
+							TItem="EL.Articulos"
+							FilterMode="FilterMode.Simple"
+							AllowPaging="true"
+							ShowPagingSummary="true"
+							PageSizeOptions=@(new int[]{5,10,20,30})
+							Data="@ArticulosCollection"
+							EditMode="DataGridEditMode.Single"
+							RowCreate="@GridRowCreate"
+							RowUpdate="@GridRowUpdate">
+				<Columns>
+					<RadzenDataGridColumn TItem="EL.Articulos" Property="IdArticulo" Title="IdArticulo" Visible="false">
+						<EditTemplate Context="Articulos">
+							<RadzenNumeric Style="display:block;width:100%" Placeholder="Ingrese el ID" @bind-Value="@Articulos.IdArticulo" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Articulos" Property="Articulo" Title="Articulo">
+						<EditTemplate Context="Articulos">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el articulo" @bind-Value="@Articulos.Articulo" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Articulos" Property="Descripcion" Title="Descripcion">
+						<EditTemplate Context="Articulos">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese descripcion" @bind-Value="@Articulos.Descripcion" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Articulos" Property="CodigoArticulo" Title="Codigo del Articulo">
+						<EditTemplate Context="Articulos">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese codigo" @bind-Value="@Articulos.CodigoArticulo" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Articulos" Property="Categoria" Title="Categoria">
+						<EditTemplate Context="Articulos">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese la categoria" @bind-Value="@Articulos.Categoria" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Articulos" Filterable="false" Sortable="false" Title="Acciones" TextAlign="TextAlign.Center" Frozen="true" FrozenPosition="FrozenColumnPosition.Right">
+						<EditTemplate Context="Articulos">
+							<RadzenButton Icon="check" ButtonStyle="ButtonStyle.Success" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => SaveButtonClick(args,Articulos)) />
+							<RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => CancelButtonClick(args,Articulos)) />
+
+						</EditTemplate>
+						<Template Context="Articulos">
+							<RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => EditButtonClick(args,Articulos)) />
+							<RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => GridDeleteButtonClick(args,Articulos)) />
+						</Template>
+					</RadzenDataGridColumn>
+				</Columns>
+			</RadzenDataGrid>
+		</RadzenColumn>
+	</RadzenRow>
+</RadzenStack>
+
+
+@code {
+	private RadzenDataGrid<EL.Articulos> GridArticulos = new();
+	private IEnumerable<EL.Articulos> ArticulosCollection { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		await CargarGrid();
+	}
+
+	private async Task CargarGrid()
+	{
+		ArticulosCollection = await DAL_Articulos.Lista();
+		ArticulosCollection = ArticulosCollection.OrderByDescending(a => a.IdArticulo).ToList();
+	}
+
+	protected async Task GridRowCreate(EL.Articulos data)
+	{
+		if (data.Articulo == string.Empty || data.Descripcion == string.Empty || data.CodigoArticulo == string.Empty || string.IsNullOrWhiteSpace(data.Categoria.ToString()))
+		{
+			return;
+		}
+		var result = await DAL_Articulos.Insert(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+	}
+
+	private async Task GridRowUpdate(EL.Articulos data)
+	{
+		if (data.Articulo == string.Empty || data.Descripcion == string.Empty || data.CodigoArticulo == string.Empty || string.IsNullOrWhiteSpace(data.Categoria.ToString()))
+		{
+			return;
+		}
+		var result = await DAL_Articulos.Update(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+
+	}
+
+	protected async Task AddButtonClick(MouseEventArgs args)
+	{
+		await GridArticulos.InsertRow(new EL.Articulos());
+	}
+
+	protected async Task EditButtonClick(MouseEventArgs args, EL.Articulos data)
+	{
+		await GridArticulos.EditRow(data);
+	}
+
+	protected async Task GridDeleteButtonClick(MouseEventArgs args, EL.Articulos data)
+	{
+		var result = await DAL_Articulos.Anular(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+	}
+
+	protected async Task SaveButtonClick(MouseEventArgs args, EL.Articulos data)
+	{
+		if (data == null) return;
+		await GridArticulos.UpdateRow(data);
+	}
+
+	protected async Task CancelButtonClick(MouseEventArgs args, EL.Articulos data)
+	{
+		GridArticulos.CancelEditRow(data);
+	}
+}

@@ -1,0 +1,157 @@
+﻿@page "/proveedores"
+@using Radzen.Blazor
+@using System.Diagnostics
+@using DAL
+@using EL
+@layout Layout.MainLayout
+@rendermode InteractiveServer
+<PageTitle>Proveedores</PageTitle>
+
+<RadzenStack>
+	<Radzenrow AlignItems="AlignItems.Center">
+		<RadzenColumn Size="12" SizeMD="6">
+			<h3>Administracion de clientes</h3>
+		</RadzenColumn>
+		<RadzenColumn Size="12" SizeMD="6">
+			<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
+				<RadzenButton Icon="add_circle_outline" Text="Agregar" Click="@AddButtonClick" Variant="Variant.Flat">
+
+				</RadzenButton>
+			</RadzenStack>
+		</RadzenColumn>
+	</Radzenrow>
+	<RadzenRow>
+		<RadzenColumn SizeMD="12">
+			<RadzenDataGrid @ref="GridProveedores"
+							ColumnWidth="200px"
+							TItem="EL.Proveedores"
+							FilterMode="FilterMode.Simple"
+							AllowPaging="true"
+							ShowPagingSummary="true"
+							PageSizeOptions=@(new int[]{5,10,20,30})
+							Data="@ProveedoresCollection"
+							EditMode="DataGridEditMode.Single"
+							RowCreate="@GridRowCreate"
+							RowUpdate="@GridRowUpdate">
+				<Columns>
+					<RadzenDataGridColumn TItem="EL.Proveedores" Property="IdProveedor" Title="IdProveedor" Visible="false">
+						<EditTemplate Context="Proveedores">
+							<RadzenNumeric Style="display:block;width:100%" Placeholder="Ingrese el ID" @bind-Value="@Proveedores.IdProveedor" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Proveedores" Property="Proveedor" Title="Proveedor">
+						<EditTemplate Context="Proveedores">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el proveedor" @bind-Value="@Proveedores.Proveedor" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Proveedores" Property="RUC" Title="RUC">
+						<EditTemplate Context="Proveedores">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el RUC" @bind-Value="@Proveedores.RUC" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Proveedores" Property="Telefono" Title="Telefono">
+						<EditTemplate Context="Proveedores">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el Telefono" @bind-Value="@Proveedores.Telefono" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Proveedores" Property="Correo" Title="Correo">
+						<EditTemplate Context="Proveedores">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el correo" @bind-Value="@Proveedores.Correo" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Proveedores" Filterable="false" Sortable="false" Title="Acciones" TextAlign="TextAlign.Center" Frozen="true" FrozenPosition="FrozenColumnPosition.Right">
+						<EditTemplate Context="Proveedores">
+							<RadzenButton Icon="check" ButtonStyle="ButtonStyle.Success" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => SaveButtonClick(args,Proveedores)) />
+							<RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => CancelButtonClick(args,Proveedores)) />
+
+						</EditTemplate>
+						<Template Context="Proveedores">
+							<RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => EditButtonClick(args,Proveedores)) />
+							<RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => GridDeleteButtonClick(args,Proveedores)) />
+
+						</Template>
+					</RadzenDataGridColumn>
+				</Columns>
+
+
+			</RadzenDataGrid>
+		</RadzenColumn>
+	</RadzenRow>
+</RadzenStack>
+
+@code {
+	private RadzenDataGrid<EL.Proveedores> GridProveedores = new();
+	private IEnumerable<EL.Proveedores> ProveedoresCollection { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		await CargarGrid();
+	}
+
+	private async Task CargarGrid()
+	{
+		ProveedoresCollection = await DAL_Proveedores.Lista();
+		ProveedoresCollection = ProveedoresCollection.OrderByDescending(a => a.IdProveedor).ToList();
+	}
+	protected async Task GridRowCreate(EL.Proveedores data)
+	{
+		if (data.Proveedor == string.Empty || data.RUC == string.Empty || data.Telefono == string.Empty || data.Correo == string.Empty)
+		{
+			return;
+		}
+		var result = await DAL_Proveedores.Insert(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+	}
+	private async Task GridRowUpdate(EL.Proveedores data)
+	{
+		if (data.Proveedor == string.Empty || data.RUC == string.Empty || data.Telefono == string.Empty || data.Correo == string.Empty)
+		{
+			return;
+		}
+		var result = await DAL_Proveedores.Update(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+
+	}
+	
+	protected async Task AddButtonClick(MouseEventArgs args)
+	{
+		await GridProveedores.InsertRow(new EL.Proveedores());
+	}
+	protected async Task EditButtonClick(MouseEventArgs args, EL.Proveedores data)
+	{
+		await GridProveedores.EditRow(data);
+	}
+	protected async Task GridDeleteButtonClick(MouseEventArgs args, EL.Proveedores data)
+	{
+		var result = await DAL_Proveedores.Anular(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+	}
+	protected async Task SaveButtonClick(MouseEventArgs args, EL.Proveedores data)
+	{
+		if (data == null) return;
+		await GridProveedores.UpdateRow(data);
+	}
+	protected async Task CancelButtonClick(MouseEventArgs args, EL.Proveedores data)
+	{
+		GridProveedores.CancelEditRow(data);
+	}
+}

@@ -11,19 +11,19 @@ namespace DAL
 {
     public static class DAL_Clientes
     {
-        public static async Task<Clientes> Insert (Clientes entidad)
+        public static async Task<Clientes> Insert(Clientes entidad)
         {
-            using BDSistemaVentas bd = new ();
+            using BDSistemaVentas bd = new();
             entidad.Activo = true;
             entidad.FechaRegistro = DateTime.Now;
-            bd.Clientes.Add (entidad);
-            await bd.SaveChangesAsync ();
+            bd.Clientes.Add(entidad);
+            await bd.SaveChangesAsync();
             return entidad;
         }
 
         public static async Task<bool> Update(Clientes entidad)
         {
-            using BDSistemaVentas BD = new ();
+            using BDSistemaVentas BD = new();
             var Registro = await BD.Clientes.FindAsync(entidad.IdCliente);
             if (Registro != null)
             {
@@ -34,7 +34,7 @@ namespace DAL
                 Registro.UsuarioActualiza = entidad.UsuarioActualiza;
                 Registro.FechaActualiza = DateTime.Now;
             }
-            return await BD.SaveChangesAsync () > 0 ;
+            return await BD.SaveChangesAsync() > 0;
         }
 
         public static async Task<bool> Anular(Clientes entidad)
@@ -53,7 +53,7 @@ namespace DAL
         public static async Task<List<Clientes>> Lista()
         {
             using BDSistemaVentas BD = new();
-            return await BD.Clientes.Where(A=> A.Activo).ToListAsync();
+            return await BD.Clientes.Where(A => A.Activo).ToListAsync();
         }
     }
 }

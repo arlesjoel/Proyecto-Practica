@@ -1,0 +1,165 @@
+﻿@page "/empleado"
+@using Radzen.Blazor
+@using System.Diagnostics
+@using DAL
+@using EL
+@layout Layout.MainLayout
+@rendermode InteractiveServer
+<PageTitle>Empleado</PageTitle>
+
+<RadzenStack>
+	<RadzenRow AlignItems="AlignItems.Center">
+		<RadzenColumn Size="12" SizeMd="6">
+			<h3>Registro de Empleados</h3>
+		</RadzenColumn>
+		<RadzenColumn Size="12" SizeMD="6">
+			<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
+				<RadzenButton Icon="Add_circle_outline" Text="Agregar" Click="@AddButtonClick" Variant="Variant.Flat">
+
+				</RadzenButton>
+			</RadzenStack>
+		</RadzenColumn>
+	</RadzenRow>
+
+	<RadzenRow>
+		<RadzenColumn SizeMD="12">
+			<RadzenDataGrid @ref="GridEmpleados"
+				ColumnWidth="200px"
+				TItem="EL.Empleado"
+				FilterMode="FilterMode.Simple"
+				AllowPaging="true"
+				ShowPagingSummary="true"
+				PageSizeOptions=@(new int[]{5,10,20,30})
+				Data="@EmpleadosCollection"
+				EditMode="DataGridEditMode.Single"
+				RowCreate="@GridRowCreate"
+				RowUpdate="@GridRowUpdate">
+
+				<Columns>
+					<RadzenDataGridColumn TItem="EL.Empleado" Property="IdEmpleado" Title="IdEmpleado" Visible="false">
+						<EditTemplate Context="Empleado">
+							<RadzenNumeric Style="display:block;width:100%" Placeholder="Ingrese el ID" @bind-Value="@Empleado.IdEmpleado"/>
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Empleado" Property="Nombre" Title="Nombre">
+						<EditTemplate Context="Empleado">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el nombre" @bind-Value="@Empleado.Nombre" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Empleado" Property="Apellido" Title="Apellido">
+						<EditTemplate Context="Empleado">
+						<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el Apellido" @bind-Value="@Empleado.Apellido" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Empleado" Property="DNI" Title="DNI">
+						<EditTemplate Context="Empleado">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el DNI" @bind-Value="@Empleado.DNI" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Empleado" Property="Username" Title="Username">
+						<EditTemplate Context="Empleado">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese el nombre de usuario" @bind-Value="@Empleado.Username" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Empleado" Property="Password" Title="Password">
+						<EditTemplate Context="Empleado">
+							<RadzenNumeric Style="display:block;width:100%" Placeholder="Ingrese la contraseña" @bind-Value="@Empleado.Password" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+
+					<RadzenDataGridColumn TItem="EL.Empleado" Filterable="false" Sortable="false" Title="Acciones" TextAlign="TextAlign.Center" Frozen="true" FrozenPosition="FrozenColumnPosition.Right">
+						<EditTemplate Context="Empleado">
+							<RadzenButton Icon="check" ButtonStyle="ButtonStyle.Success" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => SaveButtonClick(args,Empleado)) />
+							<RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => CancelButtonClick(args,Empleado)) />
+
+						</EditTemplate>
+						<Template Context="Empleado">
+							<RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => EditButtonClick(args,Empleado)) />
+							<RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => GridDeleteButtonClick(args,Empleado)) />
+						</Template>
+					</RadzenDataGridColumn>
+				</Columns>
+				</RadzenDataGrid>
+		</RadzenColumn>
+	</RadzenRow>
+</RadzenStack>
+
+@code {
+	private RadzenDataGrid<EL.Empleado> GridEmpleados = new();
+	private IEnumerable<EL.Empleado> EmpleadosCollection { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		await CargarGrid();
+	}
+
+	private async Task CargarGrid()
+	{
+		EmpleadosCollection = await DAL_Empleado.Lista();
+		EmpleadosCollection = EmpleadosCollection.OrderByDescending(a => a.IdEmpleado).ToList();
+	}
+
+	private async Task GridRowCreate(EL.Empleado data)
+	{
+		if (data.Nombre == string.Empty || data.Apellido == string.Empty || data.DNI == string.Empty || data.Username == string.Empty || data.Password == null)
+		{
+			return;
+		}
+		var Result = await DAL_Empleado.Insert(data);
+		if (Result == null)
+		{
+			return;
+		}
+		CargarGrid();
+	}
+
+	private async Task GridRowUpdate(EL.Empleado data)
+	{
+		if (data.Nombre == string.Empty || data.Apellido == string.Empty || data.DNI == string.Empty || data.Username == string.Empty || data.Password == null)
+		{
+			return;
+		}
+		var Result = await DAL_Empleado.Update(data);
+		if (Result == null)
+		{
+			return;
+		}
+		CargarGrid();
+	}
+
+	protected async Task AddButtonClick(MouseEventArgs args)
+	{
+		await GridEmpleados.InsertRow(new EL.Empleado());
+	}
+	protected async Task EditButtonClick(MouseEventArgs args, EL.Empleado data)
+	{
+		await GridEmpleados.EditRow(data);
+	}
+	protected async Task UpdateButtonClick(MouseEventArgs args, EL.Empleado data)
+	{
+		await GridEmpleados.EditRow(data);
+	}
+	protected async Task GridDeleteButtonClick(MouseEventArgs args, EL.Empleado data)
+	{
+		var result = await DAL_Empleado.Anular(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+	}
+	protected async Task SaveButtonClick(MouseEventArgs args, EL.Empleado data)
+	{
+		if (data == null) return;
+		await GridEmpleados.UpdateRow(data);
+	}
+	protected async Task CancelButtonClick(MouseEventArgs args, EL.Empleado data)
+	{
+		GridEmpleados.CancelEditRow(data);
+	}
+}

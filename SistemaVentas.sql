@@ -18,6 +18,9 @@ CREATE TABLE Clientes (
     FechaActualiza DATETIME NULL
 );
 
+INSERT INTO Clientes (Nombre, DNI, Telefono, Correo, Activo, UsuarioRegistra, FechaRegistro, UsuarioActualiza, FechaActualiza)
+  VALUES ('Arles Gonzalez', '1234', '12345678', 'arlesgonzalez', 1, 1, GETDATE(), 0, GETDATE());
+
 -- Tabla de Proveedores
 CREATE TABLE Proveedores (
     IdProveedor INT PRIMARY KEY IDENTITY,
@@ -33,7 +36,7 @@ CREATE TABLE Proveedores (
 );
 
 -- Tabla de Categoría
-CREATE TABLE Categoria (
+CREATE TABLE Categorias (
     IdCategoria INT PRIMARY KEY IDENTITY,
     Categoria VARCHAR(100) NOT NULL,
     Descripcion VARCHAR(100) NULL,
@@ -56,7 +59,7 @@ CREATE TABLE Empleado (
 );
 
 -- Tabla de Artículos
-CREATE TABLE Articulo (
+CREATE TABLE Articulos (
     IdArticulo INT PRIMARY KEY IDENTITY,
     Articulo VARCHAR(100) NOT NULL,
     Descripcion VARCHAR(100) NULL,
@@ -67,7 +70,7 @@ CREATE TABLE Articulo (
     FechaRegistro DATETIME NOT NULL,
     UsuarioActualiza INT NULL,
     FechaActualiza DATETIME NULL,
-    FOREIGN KEY (Categoria) REFERENCES Categoria(IdCategoria)
+    FOREIGN KEY (Categoria) REFERENCES Categorias(IdCategoria)
 );
 
 -- Tabla de Ingresos
@@ -90,7 +93,7 @@ CREATE TABLE DetalleIngreso (
     Cantidad DECIMAL(18,2) NOT NULL,
     PrecioVenta DECIMAL(18,2) NOT NULL,
     FOREIGN KEY (Ingreso) REFERENCES Ingreso(IdIngreso),
-    FOREIGN KEY (Articulo) REFERENCES Articulo(IdArticulo)
+    FOREIGN KEY (Articulo) REFERENCES Articulos(IdArticulo)
 );
 
 -- Tabla de Inventario
@@ -101,7 +104,7 @@ CREATE TABLE Inventario (
     Cantidad DECIMAL(18,2) NOT NULL,
     PrecioVenta DECIMAL(18,2) NULL,
     FOREIGN KEY (Ingreso) REFERENCES Ingreso(IdIngreso),
-    FOREIGN KEY (Articulo) REFERENCES Articulo(IdArticulo)
+    FOREIGN KEY (Articulo) REFERENCES Articulos(IdArticulo)
 );
 
 -- Tabla de Ventas
@@ -126,7 +129,7 @@ CREATE TABLE DetalleVenta (
     PrecioVenta DECIMAL(18,2) NOT NULL,
     Cantidad DECIMAL(18,2) NOT NULL,
     FOREIGN KEY (Venta) REFERENCES Venta(IdVenta),
-    FOREIGN KEY (Articulo) REFERENCES Articulo(IdArticulo),
+    FOREIGN KEY (Articulo) REFERENCES Articulos(IdArticulo),
     FOREIGN KEY (Ingreso) REFERENCES Ingreso(IdIngreso)
 );
 
@@ -138,5 +141,5 @@ CREATE TABLE MovimientoInventario (
     CantidadSalida DECIMAL(18,2) NOT NULL,
     FechaMovimiento DATETIME NOT NULL DEFAULT GETDATE(),
     FOREIGN KEY (Ingreso) REFERENCES Ingreso(IdIngreso),
-    FOREIGN KEY (Articulo) REFERENCES Articulo(IdArticulo)
+    FOREIGN KEY (Articulo) REFERENCES Articulos(IdArticulo)
 );

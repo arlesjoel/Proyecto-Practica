@@ -1,0 +1,149 @@
+﻿@page "/categorias"
+@using Radzen.Blazor
+@using System.Diagnostics
+@using DAL
+@using EL
+@layout Layout.MainLayout
+@rendermode InteractiveServer
+<PageTitle>Categorias</PageTitle>
+
+<RadzenStack>
+	<Radzenrow AlignItems="AlignItems.Center">
+		<RadzenColumn Size="12" SizeMD="6">
+			<h3>Categorias</h3>
+		</RadzenColumn>
+		<RadzenColumn Size="12" SizeMD="6">
+			<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
+				<RadzenButton Icon="add_circle_outline" Text="Agregar" Click="@AddButtonClick" Variant="Variant.Flat">
+
+				</RadzenButton>
+			</RadzenStack>
+		</RadzenColumn>
+	</Radzenrow>
+	<RadzenRow>
+		<RadzenColumn SizeMD="12">
+			<RadzenDataGrid @ref="GridCategorias"
+							ColumnWidth="200px"
+							TItem="EL.Categorias"
+							FilterMode="FilterMode.Simple"
+							AllowPaging="true"
+							ShowPagingSummary="true"
+							PageSizeOptions=@(new int[]{5,10,20,30})
+							Data="@CategoriasCollection"
+							EditMode="DataGridEditMode.Single"
+							RowUpdate="@GridRowUpdate"
+							RowCreate="@GridRowCreate">
+				<Columns>
+					<RadzenDataGridColumn TItem="EL.Categorias" Property="IdCategorias" Title="IdCategorias" Visible="false">
+						<EditTemplate Context="Categorias">
+							<RadzenNumeric Style="display:block;width:100%" Placeholder="Ingrese el ID" @bind-Value="@Categorias.IdCategoria" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Categorias" Property="Categoria" Title="Categoria">
+						<EditTemplate Context="Categorias">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese la categoría" @bind-Value="@Categorias.Categoria"/>
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Categorias" Property="Descripcion" Title="Descripcion">
+						<EditTemplate Context="Categorias">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese descripción" @bind-Value="@Categorias.Descripcion" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Categorias" Filterable="false" Sortable="false" Title="Acciones" TextAlign="TextAlign.Center" Frozen="true" FrozenPosition="FrozenColumnPosition.Right">
+						<EditTemplate Context="Categorias">
+							<RadzenButton Icon="check" ButtonStyle="ButtonStyle.Success" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => SaveButtonClick(args,Categorias)) />
+							<RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => CancelButtonClick(args,Categorias)) />
+
+						</EditTemplate>
+						<Template Context="Categorias">
+							<RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => EditButtonClick(args,Categorias)) />
+							<RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => GridDeleteButtonClick(args,Categorias)) />
+
+						</Template>
+					</RadzenDataGridColumn>
+				</Columns>
+
+
+			</RadzenDataGrid>
+		</RadzenColumn>
+	</RadzenRow>
+</RadzenStack>
+
+@code {
+	private RadzenDataGrid<EL.Categorias> GridCategorias = new();
+	private IEnumerable<EL.Categorias> CategoriasCollection { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		await CargarGrid();
+	}
+
+	private async Task CargarGrid()
+	{
+		CategoriasCollection = await DAL_Categorias.Lista();
+		CategoriasCollection = CategoriasCollection.OrderByDescending(a => a.IdCategoria).ToList();
+	}
+
+	protected async Task GridRowCreate(EL.Categorias data)
+	{
+		if (data.Categoria == string.Empty || data.Descripcion == string.Empty)
+		{
+			return;
+		}
+		var result = await DAL_Categorias.Insert(data);
+		if (result == null)
+		{
+			return;
+		}
+		await CargarGrid();
+	}
+	private async Task GridRowUpdate(EL.Categorias data)
+	{
+		if (data.Categoria == string.Empty || data.Descripcion == string.Empty)
+		{
+			return;
+		}
+		var result = await DAL_Categorias.Update(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+	}
+	
+	protected async Task AddButtonClick(MouseEventArgs args)
+	{
+		await GridCategorias.InsertRow(new EL.Categorias());
+	}
+
+	protected async Task EditButtonClick(MouseEventArgs args, EL.Categorias data)
+	{
+		await GridCategorias.EditRow(data);
+	}
+
+	protected async Task GridDeleteButtonClick(MouseEventArgs args, EL.Categorias data)
+	{
+		var result = await DAL_Categorias.Anular(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+	}
+	protected async Task SaveButtonClick(MouseEventArgs args, EL.Categorias data)
+	{
+		if (data == null) return;
+		await GridCategorias.UpdateRow(data);
+	}
+
+	protected async Task CancelButtonClick(MouseEventArgs args, EL.Categorias data)
+	{
+		GridCategorias.CancelEditRow(data);
+	}
+}
