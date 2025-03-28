@@ -19,9 +19,15 @@ namespace EL
         [Required]
         public int Proveedor { get; set; }
         [Required]
-        public DateTime FechaRegistro { get; set; }
+        public DateTime FechaIngreso { get; set; }
         [Required]
         public bool Activo { get; set; }
-        
+        [Required]
+        public int UsuarioRegistra { get; set; }
+        [Required]
+        public DateTime FechaRegistro { get; set; }
+        public int? UsuarioActualiza { get; set; }
+        public DateTime? FechaActualiza { get; set; }
+
     }
 }

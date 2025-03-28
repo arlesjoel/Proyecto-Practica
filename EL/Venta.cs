@@ -9,25 +9,23 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace EL
 {
-    [Table ("Empleado")]
-    public class Empleado
+    [Table("Venta")]
+    public class Venta
     {
         [Key]
-        public int IdEmpleado { get; set; }
+        public int IdVenta { get; set; }
         [Required]
-        [MaxLength(100)]
-        public string Nombre { get; set; }
+        public int Empleado { get; set; }
         [Required]
-        [MaxLength(100)]
-        public string Apellido { get; set; }
+        public int Cliente { get; set; }
         [Required]
-        [MaxLength(14)]
-        public string DNI { get; set; }
+        public decimal SubTotal { get; set; }
         [Required]
-        [MaxLength(20)]
-        public string Username { get; set; }
+        public decimal IVA { get; set; }
         [Required]
-        public byte[] Password{ get; set; }
+        public decimal Total { get; set; }
+        [Required]
+        public DateTime Fecha { get; set; }
         [Required]
         public bool Activo { get; set; }
         [Required]

@@ -7,35 +7,39 @@ using DAL.Context;
 using EL;
 using Microsoft.EntityFrameworkCore;
 
-namespace DAL
+namespace DAL.Context
 {
-    public static class DAL_DetalleIngreso
+    public static class DAL_DetalleVenta
     {
-        public static async Task<DetalleIngreso> Insert(DetalleIngreso entidad)
+        public static async Task<DetalleVenta> Insert(DetalleVenta entidad)
         {
             using BDSistemaVentas bd = new();
-            bd.DetalleIngreso.Add(entidad);
+            entidad.Activo = true;
+            bd.DetalleVenta.Add(entidad);
+            entidad.FechaRegistro = DateTime.Now;
             await bd.SaveChangesAsync();
             return entidad;
         }
-        public static async Task<bool> Update(DetalleIngreso entidad)
+        public static async Task<bool> Update(DetalleVenta entidad)
         {
             using BDSistemaVentas BD = new();
-            var Registro = await BD.DetalleIngreso.FindAsync(entidad.IdDetalle);
+            var Registro = await BD.DetalleVenta.FindAsync(entidad.IdDetalleVenta);
             if (Registro != null)
             {
-                Registro.Ingreso = entidad.Ingreso;
                 Registro.Articulo = entidad.Articulo;
-                Registro.PrecioCosto = entidad.PrecioCosto;
-                Registro.Cantidad = entidad.Cantidad;
+                Registro.Venta = entidad.Venta;
+                Registro.Ingreso = entidad.Ingreso;
                 Registro.PrecioVenta = entidad.PrecioVenta;
+                Registro.Cantidad = entidad.Cantidad;
+                Registro.UsuarioActualiza = entidad.UsuarioActualiza;
+                Registro.FechaActualiza = DateTime.Now;
             }
             return await BD.SaveChangesAsync() > 0;
         }
-        public static async Task<bool> Anular(DetalleIngreso entidad)
+        public static async Task<bool> Anular(DetalleVenta entidad)
         {
             using BDSistemaVentas BD = new();
-            var Registro = await BD.DetalleIngreso.FindAsync(entidad.IdDetalle);
+            var Registro = await BD.DetalleVenta.FindAsync(entidad.IdDetalleVenta);
             if (Registro != null)
             {
                 Registro.Activo = false;
@@ -44,10 +48,10 @@ namespace DAL
             }
             return await BD.SaveChangesAsync() > 0;
         }
-        public static async Task<List<DetalleIngreso>> Lista()
+        public static async Task<List<DetalleVenta>> Lista()
         {
             using BDSistemaVentas BD = new();
-            return await BD.DetalleIngreso.Where(A => A.Activo).ToListAsync();
+            return await BD.DetalleVenta.Where(A => A.Activo).ToListAsync();
         }
     }
 }

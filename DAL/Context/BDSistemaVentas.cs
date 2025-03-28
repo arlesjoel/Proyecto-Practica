@@ -23,6 +23,10 @@ namespace DAL.Context
         public DbSet<Articulos> Articulos { get; set; }
         public DbSet<Ingreso> Ingreso { get; set; }
         public DbSet<DetalleIngreso> DetalleIngreso { get; set; }
+        public DbSet<Inventario> Inventario { get; set; }
+        public DbSet<Venta> Venta { get; set; }
+        public DbSet<DetalleVenta> DetalleVenta { get; set; }
+        public DbSet<MovimientoInventario> MovimientoInventario { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

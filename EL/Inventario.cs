@@ -9,25 +9,19 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace EL
 {
-    [Table ("Empleado")]
-    public class Empleado
+    [Table("Inventario")]
+    public class Inventario
     {
         [Key]
-        public int IdEmpleado { get; set; }
+        public int IdInventario { get; set; }
         [Required]
-        [MaxLength(100)]
-        public string Nombre { get; set; }
+        public int Ingreso{ get; set; }
         [Required]
-        [MaxLength(100)]
-        public string Apellido { get; set; }
+        public int Articulo{ get; set; }
         [Required]
-        [MaxLength(14)]
-        public string DNI { get; set; }
+        public decimal Cantidad { get; set; }
         [Required]
-        [MaxLength(20)]
-        public string Username { get; set; }
-        [Required]
-        public byte[] Password{ get; set; }
+        public decimal PrecioVenta{ get; set; }
         [Required]
         public bool Activo { get; set; }
         [Required]

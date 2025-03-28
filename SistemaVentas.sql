@@ -18,8 +18,7 @@ CREATE TABLE Clientes (
     FechaActualiza DATETIME NULL
 );
 
-INSERT INTO Clientes (Nombre, DNI, Telefono, Correo, Activo, UsuarioRegistra, FechaRegistro, UsuarioActualiza, FechaActualiza)
-  VALUES ('Arles Gonzalez', '1234', '12345678', 'arlesgonzalez', 1, 1, GETDATE(), 0, GETDATE());
+
 
 -- Tabla de Proveedores
 CREATE TABLE Proveedores (
@@ -55,7 +54,11 @@ CREATE TABLE Empleado (
     DNI VARCHAR(14) NOT NULL,
     Username VARCHAR(20) NOT NULL,
     Password VARBINARY(MAX) NOT NULL,
-    Activo BIT NOT NULL
+    Activo BIT NOT NULL,
+	UsuarioRegistra INT NOT NULL,
+    FechaRegistro DATETIME NOT NULL,
+    UsuarioActualiza INT NULL,
+    FechaActualiza DATETIME NULL
 );
 
 -- Tabla de Artículos
@@ -78,8 +81,12 @@ CREATE TABLE Ingreso (
     IdIngreso INT PRIMARY KEY IDENTITY,
     Empleado INT NOT NULL,
     Proveedor INT NOT NULL,
-    FechaRegistro DATETIME NOT NULL,
+    FechaIngreso DATETIME NOT NULL,
     Activo BIT NOT NULL,
+	UsuarioRegistra INT NOT NULL,
+    FechaRegistro DATETIME NOT NULL,
+    UsuarioActualiza INT NULL,
+    FechaActualiza DATETIME NULL,
     FOREIGN KEY (Empleado) REFERENCES Empleado(IdEmpleado),
     FOREIGN KEY (Proveedor) REFERENCES Proveedores(IdProveedor)
 );
@@ -92,6 +99,11 @@ CREATE TABLE DetalleIngreso (
     PrecioCosto DECIMAL(18,2) NOT NULL,
     Cantidad DECIMAL(18,2) NOT NULL,
     PrecioVenta DECIMAL(18,2) NOT NULL,
+	Activo BIT NOT NULL,
+	UsuarioRegistra INT NOT NULL,
+    FechaRegistro DATETIME NOT NULL,
+    UsuarioActualiza INT NULL,
+    FechaActualiza DATETIME NULL,
     FOREIGN KEY (Ingreso) REFERENCES Ingreso(IdIngreso),
     FOREIGN KEY (Articulo) REFERENCES Articulos(IdArticulo)
 );
@@ -103,6 +115,11 @@ CREATE TABLE Inventario (
     Ingreso INT NOT NULL,
     Cantidad DECIMAL(18,2) NOT NULL,
     PrecioVenta DECIMAL(18,2) NULL,
+	Activo BIT NOT NULL,
+	UsuarioRegistra INT NOT NULL,
+    FechaRegistro DATETIME NOT NULL,
+    UsuarioActualiza INT NULL,
+    FechaActualiza DATETIME NULL,
     FOREIGN KEY (Ingreso) REFERENCES Ingreso(IdIngreso),
     FOREIGN KEY (Articulo) REFERENCES Articulos(IdArticulo)
 );
@@ -116,6 +133,11 @@ CREATE TABLE Venta (
     IVA DECIMAL(18,2) NOT NULL,
     Total DECIMAL(18,2) NOT NULL,
     Fecha DATETIME NOT NULL,
+	Activo BIT NOT NULL,
+	UsuarioRegistra INT NOT NULL,
+    FechaRegistro DATETIME NOT NULL,
+    UsuarioActualiza INT NULL,
+    FechaActualiza DATETIME NULL,
     FOREIGN KEY (Empleado) REFERENCES Empleado(IdEmpleado),
     FOREIGN KEY (Cliente) REFERENCES Clientes(IdCliente)
 );
@@ -128,18 +150,28 @@ CREATE TABLE DetalleVenta (
     Ingreso INT NOT NULL,
     PrecioVenta DECIMAL(18,2) NOT NULL,
     Cantidad DECIMAL(18,2) NOT NULL,
+	Activo BIT NOT NULL,
+	UsuarioRegistra INT NOT NULL,
+    FechaRegistro DATETIME NOT NULL,
+    UsuarioActualiza INT NULL,
+    FechaActualiza DATETIME NULL,
     FOREIGN KEY (Venta) REFERENCES Venta(IdVenta),
     FOREIGN KEY (Articulo) REFERENCES Articulos(IdArticulo),
     FOREIGN KEY (Ingreso) REFERENCES Ingreso(IdIngreso)
 );
 
 -- Tabla de Movimientos de Inventario
-CREATE TABLE MovimientoInventario (
-    IdMovimiento INT PRIMARY KEY IDENTITY,
-    Ingreso INT NOT NULL,
-    Articulo INT NOT NULL,
-    CantidadSalida DECIMAL(18,2) NOT NULL,
-    FechaMovimiento DATETIME NOT NULL DEFAULT GETDATE(),
-    FOREIGN KEY (Ingreso) REFERENCES Ingreso(IdIngreso),
-    FOREIGN KEY (Articulo) REFERENCES Articulos(IdArticulo)
-);
+	CREATE TABLE MovimientoInventario (
+		IdMovimiento INT PRIMARY KEY IDENTITY,
+		Ingreso INT NOT NULL,
+		Articulo INT NOT NULL,
+		CantidadSalida DECIMAL(18,2) NOT NULL,
+		FechaMovimiento DATETIME NOT NULL DEFAULT GETDATE(),
+		Activo BIT NOT NULL,
+		UsuarioRegistra INT NOT NULL,
+		FechaRegistro DATETIME NOT NULL,
+		UsuarioActualiza INT NULL,
+		FechaActualiza DATETIME NULL
+		FOREIGN KEY (Ingreso) REFERENCES Ingreso(IdIngreso),
+		FOREIGN KEY (Articulo) REFERENCES Articulos(IdArticulo)
+	);

@@ -1,0 +1,161 @@
+﻿@page "/ingresos"
+@using Radzen.Blazor
+@using System.Diagnostics
+@using DAL
+@using EL
+@layout Layout.MainLayout
+@rendermode InteractiveServer
+<PageTitle>Ingresos</PageTitle>
+
+<RadzenStack>
+	<Radzenrow AlignItems="AlignItems.Center">
+		<RadzenColumn Size="12" SizeMD="6">
+			<h3>Administracion de clientes</h3>
+		</RadzenColumn>
+		<RadzenColumn Size="12" SizeMD="6">
+			<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
+				<RadzenButton Icon="add_circle_outline" Text="Agregar" Click="@AddButtonClick" Variant="Variant.Flat">
+
+				</RadzenButton>
+			</RadzenStack>
+		</RadzenColumn>
+	</Radzenrow>
+	<RadzenRow>
+		<RadzenColumn SizeMD="12">
+			<RadzenDataGrid @ref="GridIngreso"
+			ColumnWidth="200px"
+			TItem="EL.Ingreso"
+			FilterMode="FilterMode.Simple"
+			AllowPaging="true"
+			ShowPagingSummary="true"
+			PageSizeOptions=@(new int[]{5,10,20,30})
+			Data="@IngresoCollection"
+			EditMode="DataGridEditMode.Single"
+			RowCreate="@GridRowCreate"
+			RowUpdate="@GridRowUpdate">
+				<Columns>
+					<RadzenDataGridColumn TItem="EL.Ingreso" Property="IdIngreso" Title="IdIngreso" Visible="false">
+						<EditTemplate Context="Ingreso">
+							<RadzenNumeric Style="display:block;width:100%" Placeholder="Ingrese el ID" @bind-Value="@Ingreso.IdIngreso" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Ingreso" Property="Empleado" Title="Empleado">
+						<EditTemplate Context="Ingreso">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese ID del empleado" @bind-Value="@Ingreso.Empleado" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Ingreso" Property="Proveedor" Title="Proveedor">
+						<EditTemplate Context="Ingreso">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="Ingrese ID del proveedor" @bind-Value="@Ingreso.Proveedor" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Ingreso" Property="FechaIngreso.ToShortDateString()" Title="Fecha de ingreso">
+						<EditTemplate Context="Ingreso">
+							<RadzenTextBox Style="display:block;width:100%" Placeholder="ingrese la fecha" @bind-Value="@Ingreso.FechaIngreso" />
+						</EditTemplate>
+					</RadzenDataGridColumn>
+					<RadzenDataGridColumn TItem="EL.Ingreso" Filterable="false" Sortable="false" Title="Acciones" TextAlign="TextAlign.Center" Frozen="true" FrozenPosition="FrozenColumnPosition.Right">
+						<EditTemplate Context="Ingreso">
+							<RadzenButton Icon="check" ButtonStyle="ButtonStyle.Success" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => SaveButtonClick(args,Ingreso)) />
+							<RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => CancelButtonClick(args,Ingreso)) />
+
+						</EditTemplate>
+						<Template Context="Ingreso">
+							<RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => EditButtonClick(args,Ingreso)) />
+							<RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Variant="Variant.Flat" Size="ButtonSize.Medium"
+										  Style="margin-top:0.25rem; margin-right:0.25rem;margin-bottom:0.25rem" Click=@(args => GridDeleteButtonClick(args,Ingreso)) />
+						</Template>
+					</RadzenDataGridColumn>
+				</Columns>
+			</RadzenDataGrid>
+		</RadzenColumn>
+	</RadzenRow>
+</RadzenStack>
+
+
+@code {
+	private RadzenDataGrid<EL.Ingreso> GridIngreso = new();
+	private IEnumerable<EL.Ingreso> IngresoCollection { get; set; }
+	Ingreso ingreso = new ();
+	string empleado = ingreso.Emplado.ToString();
+
+	protected override async Task OnInitializedAsync()
+	{
+		await CargarGrid();
+	}
+
+	private async Task CargarGrid()
+	{
+		IngresoCollection = await DAL_Ingreso.Lista();
+		IngresoCollection = IngresoCollection.OrderByDescending(a => a.IdIngreso).ToList();
+	}
+
+	protected async Task GridRowCreate(EL.Ingreso data)
+	{
+		Ingreso ingreso = new();
+		data.Empleado = ingreso.Empleado.ToString();
+		string empleado = ingreso.Emplado.ToString();
+		if (string.IsNullOrWhiteSpace(data.Empleado.ToString()) || string.IsNullOrWhiteSpace(data.Proveedor.ToString()) || string.IsNullOrWhiteSpace(data.FechaIngreso.ToString()))
+		{
+			return;
+		}
+		var result = await DAL_Ingreso.Insert(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+	}
+
+	private async Task GridRowUpdate(EL.Ingreso data)
+	{
+		if (string.IsNullOrWhiteSpace(data.Empleado.ToString()) || string.IsNullOrWhiteSpace(data.Proveedor.ToString()) || string.IsNullOrWhiteSpace(data.FechaIngreso.ToString()))
+		{
+			return;
+		}
+		var result = await DAL_Ingreso.Update	(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+
+	}
+
+	protected async Task AddButtonClick(MouseEventArgs args)
+	{
+		await GridIngreso.InsertRow(new EL.Ingreso());
+	}
+
+	protected async Task EditButtonClick(MouseEventArgs args, EL.Ingreso data)
+	{
+		await GridIngreso.EditRow(data);
+	}
+
+	protected async Task GridDeleteButtonClick(MouseEventArgs args, EL.Ingreso data)
+	{
+		var result = await DAL_Ingreso.Anular(data);
+		if (result == null)
+		{
+			return;
+		}
+
+		await CargarGrid();
+	}
+
+	protected async Task SaveButtonClick(MouseEventArgs args, EL.Ingreso data)
+	{
+		if (data == null) return;
+		await GridIngreso.UpdateRow(data);
+	}
+
+	protected async Task CancelButtonClick(MouseEventArgs args, EL.Ingreso data)
+	{
+		GridIngreso.CancelEditRow(data);
+	}
+}

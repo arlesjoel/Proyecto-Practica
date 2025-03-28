@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|c:\\users\\ing\\pictures\\aplicacionpractica\\dinamicweb\\components\\pages\\frm_ingresos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|solutionrelative:dinamicweb\\components\\pages\\frm_ingresos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|c:\\users\\ing\\pictures\\aplicacionpractica\\dal\\dal_categorias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|solutionrelative:dal\\dal_categorias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|c:\\users\\ing\\pictures\\aplicacionpractica\\dal\\dal_ingreso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|solutionrelative:dal\\dal_ingreso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|c:\\users\\ing\\pictures\\aplicacionpractica\\dinamicweb\\components\\pages\\frm_articulos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|solutionrelative:dinamicweb\\components\\pages\\frm_articulos.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{43EE56C2-37AE-4E3A-8400-6052D740F6A0}|EL\\EL.csproj|c:\\users\\ing\\pictures\\aplicacionpractica\\el\\articulos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{43EE56C2-37AE-4E3A-8400-6052D740F6A0}|EL\\EL.csproj|solutionrelative:el\\articulos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{43EE56C2-37AE-4E3A-8400-6052D740F6A0}|EL\\EL.csproj|c:\\users\\ing\\pictures\\aplicacionpractica\\el\\ingreso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{43EE56C2-37AE-4E3A-8400-6052D740F6A0}|EL\\EL.csproj|solutionrelative:el\\ingreso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|c:\\users\\ing\\pictures\\aplicacionpractica\\dal\\dal_articulos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|solutionrelative:dal\\dal_articulos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|c:\\users\\ing\\pictures\\aplicacionpractica\\dinamicweb\\components\\pages\\frm_cliente.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|solutionrelative:dinamicweb\\components\\pages\\frm_cliente.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|c:\\users\\ing\\pictures\\aplicacionpractica\\dal\\dal_clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{307F381D-6BBA-49F6-9E43-F49A81F6F360}|DAL\\DAL.csproj|solutionrelative:dal\\dal_clientes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|c:\\users\\ing\\pictures\\aplicacionpractica\\dinamicweb\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EAA3CA69-0D2C-41BF-A08F-3CD3C5FB20C8}|dinamicweb\\dinamicweb.csproj|solutionrelative:dinamicweb\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Articulos.cs",
-              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\EL\\Articulos.cs",
-              "RelativeDocumentMoniker": "EL\\Articulos.cs",
-              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\EL\\Articulos.cs",
-              "RelativeToolTip": "EL\\Articulos.cs",
-              "ViewState": "AgIAAA0AAAAAhocD3m8vwBoAAAAcAAAAAAAAAA==",
+              "Title": "DAL_Categorias.cs",
+              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\DAL\\DAL_Categorias.cs",
+              "RelativeDocumentMoniker": "DAL\\DAL_Categorias.cs",
+              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\DAL\\DAL_Categorias.cs",
+              "RelativeToolTip": "DAL\\DAL_Categorias.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T06:42:48.157Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DAL_Articulos.cs",
-              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\DAL\\DAL_Articulos.cs",
-              "RelativeDocumentMoniker": "DAL\\DAL_Articulos.cs",
-              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\DAL\\DAL_Articulos.cs",
-              "RelativeToolTip": "DAL\\DAL_Articulos.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAAADEAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T06:42:39.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FRM_Articulos.razor",
-              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\dinamicweb\\Components\\Pages\\FRM_Articulos.razor",
-              "RelativeDocumentMoniker": "dinamicweb\\Components\\Pages\\FRM_Articulos.razor",
-              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\dinamicweb\\Components\\Pages\\FRM_Articulos.razor",
-              "RelativeToolTip": "dinamicweb\\Components\\Pages\\FRM_Articulos.razor",
-              "ViewState": "AgIAADMAAAAAAAAAAAAcwE0AAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-27T06:43:21.416Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FRM_Cliente.razor",
-              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\dinamicweb\\Components\\Pages\\FRM_Cliente.razor",
-              "RelativeDocumentMoniker": "dinamicweb\\Components\\Pages\\FRM_Cliente.razor",
-              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\dinamicweb\\Components\\Pages\\FRM_Cliente.razor",
-              "RelativeToolTip": "dinamicweb\\Components\\Pages\\FRM_Cliente.razor",
-              "ViewState": "AgIAADQAAAAAAAAAAAAswFEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-26T16:54:06.322Z",
+              "WhenOpened": "2025-03-28T05:13:04.671Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "DAL_Clientes.cs",
-              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\DAL\\DAL_Clientes.cs",
-              "RelativeDocumentMoniker": "DAL\\DAL_Clientes.cs",
-              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\DAL\\DAL_Clientes.cs",
-              "RelativeToolTip": "DAL\\DAL_Clientes.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAADQAAAAIAAAAAAAAAA==",
+              "Title": "Ingreso.cs",
+              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\EL\\Ingreso.cs",
+              "RelativeDocumentMoniker": "EL\\Ingreso.cs",
+              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\EL\\Ingreso.cs",
+              "RelativeToolTip": "EL\\Ingreso.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABMAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T06:06:52.464Z",
+              "WhenOpened": "2025-03-28T04:31:41.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\dinamicweb\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "dinamicweb\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\dinamicweb\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "dinamicweb\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAcwDYAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-28T04:20:06.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DAL_Ingreso.cs",
+              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\DAL\\DAL_Ingreso.cs",
+              "RelativeDocumentMoniker": "DAL\\DAL_Ingreso.cs",
+              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\DAL\\DAL_Ingreso.cs",
+              "RelativeToolTip": "DAL\\DAL_Ingreso.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAC4AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T04:19:17.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FRM_Articulos.razor",
+              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\dinamicweb\\Components\\Pages\\FRM_Articulos.razor",
+              "RelativeDocumentMoniker": "dinamicweb\\Components\\Pages\\FRM_Articulos.razor",
+              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\dinamicweb\\Components\\Pages\\FRM_Articulos.razor",
+              "RelativeToolTip": "dinamicweb\\Components\\Pages\\FRM_Articulos.razor",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAswFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-28T04:19:04.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FRM_Ingresos.razor",
+              "DocumentMoniker": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\dinamicweb\\Components\\Pages\\FRM_Ingresos.razor",
+              "RelativeDocumentMoniker": "dinamicweb\\Components\\Pages\\FRM_Ingresos.razor",
+              "ToolTip": "C:\\Users\\ing\\Pictures\\aplicacionPractica\\dinamicweb\\Components\\Pages\\FRM_Ingresos.razor",
+              "RelativeToolTip": "dinamicweb\\Components\\Pages\\FRM_Ingresos.razor",
+              "ViewState": "AgIAACcAAAAAAAAAAAAcwEQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-28T04:18:51.045Z",
               "EditorCaption": ""
             }
           ]

@@ -24,5 +24,13 @@ namespace EL
         public decimal Cantidad { get; set; }
         [Required]
         public decimal PrecioVenta { get; set; }
+        [Required]
+        public bool Activo { get; set; }
+        [Required]
+        public int UsuarioRegistra { get; set; }
+        [Required]
+        public DateTime FechaRegistro { get; set; }
+        public int? UsuarioActualiza { get; set; }
+        public DateTime? FechaActualiza { get; set; }
     }
 }
